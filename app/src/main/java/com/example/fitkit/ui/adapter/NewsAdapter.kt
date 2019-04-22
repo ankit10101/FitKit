@@ -1,4 +1,4 @@
-package com.example.fitkit
+package com.example.fitkit.adapter
 
 import android.annotation.SuppressLint
 import android.support.v7.widget.RecyclerView
@@ -8,9 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_news.view.*
-import android.support.v4.content.ContextCompat.startActivity
 import android.content.Intent
 import android.net.Uri
+import com.example.fitkit.News
+import com.example.fitkit.R
 
 
 class NewsAdapter(private val newsItems: List<News>) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {

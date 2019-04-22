@@ -4,12 +4,12 @@ import android.arch.persistence.room.Room
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.text.method.TextKeyListener.clear
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.fitkit.*
+import com.example.fitkit.adapter.NewsAdapter
+import com.example.fitkit.database.NewsDatabase
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_sports_news.*
 import okhttp3.*
