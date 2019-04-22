@@ -13,19 +13,19 @@ import android.content.Intent
 import android.net.Uri
 
 
-class NewsAdapter(private val newsItems: NewsResponse) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
+class NewsAdapter(private val newsItems: List<News>) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): NewsHolder {
         val inflatedView = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.item_news, viewGroup, false)
         return NewsHolder(inflatedView)
     }
 
-    override fun getItemCount() = newsItems.articles.size
+    override fun getItemCount() = newsItems.size
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(newsHolder: NewsHolder, position: Int) {
-        val currentNews = newsItems.articles[position]
-        Log.e("TAG",currentNews.title.toString())
+        val currentNews = newsItems[position]
+        Log.e("TAG", currentNews.title.toString())
         with(newsHolder.itemView) {
             tvSource.text = currentNews.source!!.name.toString()
             tvTitle.text = currentNews.title.toString()

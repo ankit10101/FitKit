@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "306318236007",
+    "firebase_url": "https://fitkit-57171.firebaseio.com",
+    "project_id": "fitkit-57171",
+    "storage_bucket": "fitkit-57171.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306318236007:android:a9ba98f92d7bc4da",
+        "android_client_info": {
+          "package_name": "com.example.fitkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306318236007-52fkocjqvqudnj8bq6h8lf3jh021e9j1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fitkit",
+            "certificate_hash": "10f6ce8ac59ff7690f6a149909a2b6c3d01ff957"
+          }
+        },
+        {
+          "client_id": "306318236007-5q0ftgnl6dqbjg16jsa6rgf999e6nujr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiHUvRoYjQBqIxY0Y0CPAadhhtEyTl7bU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306318236007-5q0ftgnl6dqbjg16jsa6rgf999e6nujr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
