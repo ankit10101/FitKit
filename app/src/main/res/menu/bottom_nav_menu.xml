@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/navigation_bmiCalculator"
+            android:icon="@drawable/ic_bmi"
+            android:title="@string/title_bmiCalculator"/>
+
+    <item
+            android:id="@+id/navigation_stepCounter"
+            android:icon="@drawable/ic_steps"
+            android:title="@string/title_stepCounter"/>
+    <item
+            android:id="@+id/navigation_sportsNews"
+            android:icon="@drawable/ic_sports"
+            android:title="@string/title_sportsNews"/>
+
+</menu>
