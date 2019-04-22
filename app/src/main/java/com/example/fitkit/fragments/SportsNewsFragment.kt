@@ -19,7 +19,6 @@ import java.io.IOException
 
 class SportsNewsFragment : Fragment() {
     private val gson = Gson()
-//    private val newsList : NewsResponse()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_sports_news, container, false)
     }
@@ -39,7 +38,6 @@ class SportsNewsFragment : Fragment() {
             override fun onResponse(call: Call, response: Response) {
                 val responseBody = response.body()
                 val newResult = responseBody?.string()
-                Log.e("TAG",newResult)
                 var newsList = gson.fromJson(newResult, NewsResponse::class.java)
                 activity?.runOnUiThread {
                     val newsAdapter = NewsAdapter(newsList)
