@@ -15,6 +15,7 @@
             android:focusable="true"
             android:focusableInTouchMode="true">
         <EditText
+                android:id="@+id/etName"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -30,6 +31,7 @@
             android:focusable="true"
             android:focusableInTouchMode="true">
         <EditText
+                android:id="@+id/etEmailSignUp"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,6 +47,7 @@
             android:focusable="true"
             android:focusableInTouchMode="true">
         <EditText
+                android:id="@+id/etGender"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,6 +63,7 @@
             android:focusable="true"
             android:focusableInTouchMode="true">
         <EditText
+                android:id="@+id/etHeight"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,6 +79,7 @@
             android:focusable="true"
             android:focusableInTouchMode="true">
         <EditText
+                android:id="@+id/etWeight"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -90,6 +95,7 @@
             android:focusable="true"
             android:focusableInTouchMode="true">
         <EditText
+                android:id="@+id/etPasswordSignUp"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,6 +105,7 @@
                 android:inputType="text"/>
     </android.support.design.widget.TextInputLayout>
     <Button
+            android:id="@+id/btnSignUp"
             android:layout_marginTop="50dp"
             android:textSize="22sp"
             android:layout_width="match_parent"
