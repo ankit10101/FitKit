@@ -28,5 +28,7 @@
     <string name="gender">Gender</string>
     <string name="email">Email</string>
     <string name="login">LOGIN</string>
+    <string name="my_details">My Details</string>
+    <string name="sign_out">Sign Out</string>
 
 </resources>

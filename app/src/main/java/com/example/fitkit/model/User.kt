@@ -4,6 +4,6 @@ class User(
     var email: String,
     var name: String,
     var gender: String,
-    var height: Double,
+    var height: String,
     var wieght: String
 )
