@@ -19,5 +19,7 @@
     <string name="content_user_answer">Key your weight as Kg</string>
     <string name="steps">Steps</string>
     <string name="_0">0</string>
+    <string name="distance_travelled">Distance Travelled</string>
+    <string name="enter_full_name">Enter Full Name</string>
 
 </resources>

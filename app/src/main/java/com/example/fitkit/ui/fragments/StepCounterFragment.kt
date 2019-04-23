@@ -61,7 +61,9 @@ class StepCounterFragment : Fragment(),SensorEventListener {
     override fun onSensorChanged(event: SensorEvent?) {
         if (running) {
             tvStepsValue.text = "" + event!!.values[0]
+    //        tvDistance.text = "" + tvStepsValue.text.toInt()
         }
     }
+
 
 }
