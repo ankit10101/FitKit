@@ -21,5 +21,15 @@
     <string name="_0">0</string>
     <string name="distance_travelled">Distance Travelled</string>
     <string name="enter_full_name">Enter Full Name</string>
+    <string name="register">REGISTER</string>
+    <string name="password">Password</string>
+    <string name="weight_kg">Weight(kg)</string>
+    <string name="height_m">Height(m)</string>
+    <string name="gender">Gender</string>
+    <string name="email">Email</string>
+    <string name="login">LOGIN</string>
+    <string name="register">REGISTER</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
 
 </resources>

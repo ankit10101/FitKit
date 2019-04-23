@@ -2,8 +2,8 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="30dp"
         tools:context=".ui.activity.SignInActivity">
@@ -17,10 +17,10 @@
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:textSize="20sp"
                 android:ems="10"
-                android:inputType="text"/>
+                android:inputType="textEmailAddress"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -34,7 +34,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:textSize="20sp"
                 android:ems="10"
                 android:inputType="textPassword"/>
@@ -46,13 +46,17 @@
             android:textSize="22sp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="LOGIN"/>
+            android:text="@string/login"
+            android:textColor="#fff"
+            android:background="@drawable/button_rounded"/>
     <Button
             android:id="@+id/btnRegister"
             android:layout_marginTop="10dp"
             android:textSize="22sp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="REGISTER"/>
+            android:text="@string/register"
+            android:textColor="#fff"
+            android:background="@drawable/button_rounded"/>
 
 </LinearLayout>
