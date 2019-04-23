@@ -1,7 +1,7 @@
 package com.example.fitkit.database
 
 import android.arch.persistence.room.*
-import com.example.fitkit.News
+import com.example.fitkit.model.News
 
 @Dao
 interface NewsDao {

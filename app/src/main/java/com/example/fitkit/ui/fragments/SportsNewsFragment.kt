@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import com.example.fitkit.*
 import com.example.fitkit.adapter.NewsAdapter
 import com.example.fitkit.database.NewsDatabase
+import com.example.fitkit.model.News
+import com.example.fitkit.model.NewsResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_sports_news.*
 import okhttp3.*

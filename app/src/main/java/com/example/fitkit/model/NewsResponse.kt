@@ -1,4 +1,4 @@
-package com.example.fitkit
+package com.example.fitkit.model
 
 import android.arch.persistence.room.Embedded
 import android.arch.persistence.room.Entity

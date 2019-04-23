@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_news.view.*
 import android.content.Intent
 import android.net.Uri
-import com.example.fitkit.News
+import com.example.fitkit.model.News
 import com.example.fitkit.R
 
 

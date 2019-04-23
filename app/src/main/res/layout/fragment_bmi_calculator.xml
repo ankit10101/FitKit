@@ -88,13 +88,16 @@
         </LinearLayout>
 
         <Button
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:id="@+id/buttonCalculate"
                 style="@style/ButtonTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/content_button_calculate"
-                android:text="@string/text_button_calculate"/>
+                android:text="@string/text_button_calculate"
+                android:textColor="#fff"
+                android:background="@drawable/button_rounded"/>
 
     </LinearLayout>
 </RelativeLayout>

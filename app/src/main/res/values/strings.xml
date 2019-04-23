@@ -6,7 +6,7 @@
 
     <string name="text_button_calculate">Calculate</string>
     <string name="text_button_exit">Exit</string>
-    <string name="default_show_result"></string>
+    <string name="default_show_result"/>
     <string name="default_show_bmi">Enter weight (kg) and height (m)</string>
 
     <string name="text_label_kg">kg</string>
@@ -14,8 +14,8 @@
 
     <string name="content_button_calculate">Calculate your BMI</string>
     <string name="content_button_exit">Exit application</string>
-    <string name="content_show_result"></string>
-    <string name="content_show_bmi"></string>
+    <string name="content_show_result"/>
+    <string name="content_show_bmi"/>
     <string name="content_user_answer">Key your weight as Kg</string>
     <string name="steps">Steps</string>
     <string name="_0">0</string>
@@ -28,8 +28,5 @@
     <string name="gender">Gender</string>
     <string name="email">Email</string>
     <string name="login">LOGIN</string>
-    <string name="register">REGISTER</string>
-    <string name="password">Password</string>
-    <string name="email">Email</string>
 
 </resources>
