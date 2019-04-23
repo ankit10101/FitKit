@@ -1,4 +1,4 @@
-package com.example.fitkit.fragments
+package com.example.fitkit.ui.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -17,9 +17,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.fitkit.R
 import kotlinx.android.synthetic.main.fragment_step_counter.*
+import java.text.DecimalFormat
 
 
-class StepCounterFragment : Fragment(),SensorEventListener {
+class StepCounterFragment : Fragment(), SensorEventListener {
     var running = false
     var sensorManager: SensorManager? = null
 
@@ -31,8 +32,6 @@ class StepCounterFragment : Fragment(),SensorEventListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sensorManager = activity?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-
-
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
@@ -40,7 +39,6 @@ class StepCounterFragment : Fragment(),SensorEventListener {
         super.onResume()
         running = true
         val stepsSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
-
         if (stepsSensor == null) {
             Toast.makeText(requireContext(), "No Step Counter Sensor !", Toast.LENGTH_SHORT).show()
         } else {
@@ -59,9 +57,10 @@ class StepCounterFragment : Fragment(),SensorEventListener {
 
     @SuppressLint("SetTextI18n")
     override fun onSensorChanged(event: SensorEvent?) {
+        val twoDecimalPlaces = DecimalFormat(".##")
         if (running) {
-            tvStepsValue.text = "" + event!!.values[0]
-    //        tvDistance.text = "" + tvStepsValue.text.toInt()
+            tvStepsValue.text = "" + twoDecimalPlaces.format(event!!.values[0])
+            tvDistance.text = "" + twoDecimalPlaces.format((event.values[0] * 0.78))
         }
     }
 

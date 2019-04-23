@@ -10,7 +10,7 @@ import android.view.MenuItem
 import com.example.fitkit.R
 import com.example.fitkit.fragments.BmiCalculatorFragment
 import com.example.fitkit.fragments.SportsNewsFragment
-import com.example.fitkit.fragments.StepCounterFragment
+import com.example.fitkit.ui.fragments.StepCounterFragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 

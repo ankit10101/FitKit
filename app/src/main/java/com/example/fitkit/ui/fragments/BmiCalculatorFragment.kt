@@ -26,7 +26,7 @@ class BmiCalculatorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         buttonCalculate.setOnClickListener {
-            var twoDecimalPlaces = DecimalFormat(".##")
+            val twoDecimalPlaces = DecimalFormat(".##")
             val kg = java.lang.Double.parseDouble(inputKg.text.toString())
             val m = java.lang.Double.parseDouble(inputM.text.toString())
             showBMI.text = "BMI = " + twoDecimalPlaces.format(computeBMI(kg, m)).toString()
