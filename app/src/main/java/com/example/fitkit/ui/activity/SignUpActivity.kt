@@ -26,23 +26,23 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        currentUser?.let {
-            FirebaseDatabase.getInstance().reference.child("Users")
-                .child(FirebaseAuth.getInstance().currentUser!!.uid)
-                .addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onCancelled(databaseError: DatabaseError) {
-                        throw databaseError.toException();
-                    }
-
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        etEmail.setText(
-                            dataSnapshot.child("email").getValue(String::class.java),
-                            TextView.BufferType.EDITABLE
-                        )
-                    }
-                })
-        }
+//        val currentUser = FirebaseAuth.getInstance().currentUser
+//        currentUser?.let {
+//            FirebaseDatabase.getInstance().reference.child("Users")
+//                .child(FirebaseAuth.getInstance().currentUser!!.uid)
+//                .addListenerForSingleValueEvent(object : ValueEventListener {
+//                    override fun onCancelled(databaseError: DatabaseError) {
+//                        throw databaseError.toException();
+//                    }
+//
+//                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                        etEmail.setText(
+//                            dataSnapshot.child("email").getValue(String::class.java),
+//                            TextView.BufferType.EDITABLE
+//                        )
+//                    }
+//                })
+//        }
 
         btnSignUp.setOnClickListener {
             val email = etEmailSignUp.text.toString()
@@ -66,6 +66,7 @@ class SignUpActivity : AppCompatActivity() {
                         .child(FirebaseAuth.getInstance().currentUser!!.uid).setValue(user)
                     Toast.makeText(this, "Registration Completed", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, MainActivity::class.java))
+                    finish()
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Registration Failed", Toast.LENGTH_SHORT).show()

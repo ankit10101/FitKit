@@ -30,6 +30,7 @@ class SignInActivity : AppCompatActivity() {
                 .signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
                     startActivity(Intent(this, MainActivity::class.java))
+                    finish()
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Login Failed!!", Toast.LENGTH_SHORT).show()
