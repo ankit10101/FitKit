@@ -18,7 +18,6 @@ import com.example.fitkit.R
 import kotlinx.android.synthetic.main.fragment_step_counter.*
 import java.text.DecimalFormat
 
-
 class StepCounterFragment : Fragment(), SensorEventListener {
     companion object {
         var stepCounterFragment: StepCounterFragment? = null
