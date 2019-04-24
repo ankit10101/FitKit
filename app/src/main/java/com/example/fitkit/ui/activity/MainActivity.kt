@@ -8,8 +8,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.example.fitkit.R
-import com.example.fitkit.fragments.BmiCalculatorFragment
-import com.example.fitkit.fragments.SportsNewsFragment
+import com.example.fitkit.ui.fragments.BmiCalculatorFragment
+import com.example.fitkit.ui.fragments.SportsNewsFragment
 import com.example.fitkit.ui.fragments.StepCounterFragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,11 +19,11 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         lateinit var fragment: Fragment
         when (item.itemId) {
             R.id.navigation_stepCounter ->
-                fragment = StepCounterFragment()
+                fragment = StepCounterFragment.getInstance()!!
             R.id.navigation_bmiCalculator ->
-                fragment = BmiCalculatorFragment()
+                fragment = BmiCalculatorFragment.getInstance()!!
             R.id.navigation_sportsNews ->
-                fragment = SportsNewsFragment()
+                fragment = SportsNewsFragment.getInstance()!!
         }
         return loadFragment(fragment)
     }
@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             R.id.signout -> {
                 FirebaseAuth.getInstance().signOut()
                 startActivity(Intent(this, SignInActivity::class.java))
+                finish()
                 return true
             }
         }

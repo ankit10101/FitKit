@@ -1,9 +1,6 @@
-package com.example.fitkit.fragments
+package com.example.fitkit.ui.fragments
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.net.Uri
-import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -15,7 +12,18 @@ import java.text.DecimalFormat
 
 
 class BmiCalculatorFragment : Fragment() {
+    companion object {
+        var bmiCalculatorFragment: BmiCalculatorFragment? = null
+        //For getting the same unique instance of the fragment on every call;
+        //i.e. Singleton pattern
+        fun getInstance(): Fragment? {
 
+            if (bmiCalculatorFragment == null) {
+                bmiCalculatorFragment = BmiCalculatorFragment()
+            }
+            return bmiCalculatorFragment
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment

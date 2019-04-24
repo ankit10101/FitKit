@@ -10,7 +10,6 @@ import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat.getSystemService
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,9 +20,23 @@ import java.text.DecimalFormat
 
 
 class StepCounterFragment : Fragment(), SensorEventListener {
+    companion object {
+        var stepCounterFragment: StepCounterFragment? = null
+        //For getting the same unique instance of the fragment on every call;
+        //i.e. Singleton pattern
+        fun getInstance(): Fragment? {
+
+            if (stepCounterFragment == null) {
+                stepCounterFragment = StepCounterFragment()
+            }
+            return stepCounterFragment
+        }
+    }
+
     var running = false
     var sensorManager: SensorManager? = null
-
+    var count = 1
+    var x: Float = 0F
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_step_counter, container, false)
@@ -58,9 +71,13 @@ class StepCounterFragment : Fragment(), SensorEventListener {
     @SuppressLint("SetTextI18n")
     override fun onSensorChanged(event: SensorEvent?) {
         val twoDecimalPlaces = DecimalFormat(".##")
+        if (count == 1) {
+            x = event!!.values[0]
+        }
         if (running) {
-            tvStepsValue.text = "" + twoDecimalPlaces.format(event!!.values[0])
-            tvDistance.text = "" + twoDecimalPlaces.format((event.values[0] * 0.78))
+            tvStepsValue.text = "" + twoDecimalPlaces.format((event!!.values[0] - x))
+            tvDistance.text = "" + twoDecimalPlaces.format(((event.values[0] - x) * 0.78))
+            count++
         }
     }
 

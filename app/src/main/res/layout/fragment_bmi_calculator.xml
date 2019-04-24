@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            tools:context=".fragments.BmiCalculatorFragment">
+            tools:context=".ui.fragments.BmiCalculatorFragment">
 
         <LinearLayout
                 android:id="@+id/container"

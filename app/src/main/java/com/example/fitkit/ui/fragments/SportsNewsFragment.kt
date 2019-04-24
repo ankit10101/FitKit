@@ -1,4 +1,4 @@
-package com.example.fitkit.fragments
+package com.example.fitkit.ui.fragments
 
 import android.arch.persistence.room.Room
 import android.os.Bundle
@@ -19,6 +19,18 @@ import java.io.IOException
 
 
 class SportsNewsFragment : Fragment() {
+    companion object {
+        var sportsNewsFragment: SportsNewsFragment? = null
+        //For getting the same unique instance of the fragment on every call;
+        //i.e. Singleton pattern
+        fun getInstance(): Fragment? {
+
+            if (sportsNewsFragment == null) {
+                sportsNewsFragment = SportsNewsFragment()
+            }
+            return sportsNewsFragment
+        }
+    }
     private val gson = Gson()
     val articlesList = ArrayList<News>()
     val url =
