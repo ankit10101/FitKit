@@ -28,6 +28,6 @@
                 android:name=".ui.activity.MainActivity"
                 android:label="@string/app_name">
         </activity>
-        <service android:name=".ForegroundService"/>
+        <service android:name=".StepCountingService"/>
     </application>
 </manifest>

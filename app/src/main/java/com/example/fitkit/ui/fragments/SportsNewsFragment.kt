@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.fitkit.*
-import com.example.fitkit.adapter.NewsAdapter
+import com.example.fitkit.ui.adapter.NewsAdapter
 import com.example.fitkit.database.NewsDatabase
 import com.example.fitkit.model.News
 import com.example.fitkit.model.NewsResponse

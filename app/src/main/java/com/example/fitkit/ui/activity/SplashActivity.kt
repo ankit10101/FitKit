@@ -19,3 +19,17 @@ class SplashActivity : AppCompatActivity() {
         }, SPLASH_TIME_OUT.toLong())
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

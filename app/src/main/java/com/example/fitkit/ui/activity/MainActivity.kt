@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-
         when (item?.itemId) {
             R.id.signout -> {
                 FirebaseAuth.getInstance().signOut()

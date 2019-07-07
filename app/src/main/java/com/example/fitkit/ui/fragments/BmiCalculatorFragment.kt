@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.example.fitkit.R
 import kotlinx.android.synthetic.main.fragment_bmi_calculator.*
 import java.text.DecimalFormat
+import kotlin.math.pow
 
 
 class BmiCalculatorFragment : Fragment() {
@@ -66,6 +67,6 @@ class BmiCalculatorFragment : Fragment() {
     }
 
     private fun computeBMI(kg: Double, m: Double): Double {
-        return kg / Math.pow(m, 2.0)
+        return kg / m.pow(2.0)
     }
 }
