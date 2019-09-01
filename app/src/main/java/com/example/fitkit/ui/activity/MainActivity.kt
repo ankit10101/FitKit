@@ -52,6 +52,11 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
+            R.id.profile ->{
+                val intent = Intent(this,ProfileActivity::class.java)
+                startActivity(intent)
+            }
+
             R.id.signout -> {
                 FirebaseAuth.getInstance().signOut()
                 startActivity(Intent(this, SignInActivity::class.java))

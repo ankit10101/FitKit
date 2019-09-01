@@ -17,10 +17,9 @@ import kotlinx.android.synthetic.main.fragment_sports_news.*
 import okhttp3.*
 import java.io.IOException
 
-
 class SportsNewsFragment : Fragment() {
     companion object {
-        var sportsNewsFragment: SportsNewsFragment? = null
+        private var sportsNewsFragment: SportsNewsFragment? = null
         //For getting the same unique instance of the fragment on every call;
         //i.e. Singleton pattern
         fun getInstance(): Fragment? {
@@ -33,7 +32,7 @@ class SportsNewsFragment : Fragment() {
     }
     private val gson = Gson()
     val articlesList = ArrayList<News>()
-    val url =
+    private val url =
         "https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=73ae6891ccd2401f92adb0b8360fc88e"
     val newsAdapter = NewsAdapter(articlesList)
     private val newsDatabase by lazy {
@@ -47,7 +46,7 @@ class SportsNewsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_sports_news, container, false)
     }
 
-    fun updateAll() {
+    private fun updateAll() {
         val client = OkHttpClient()
         val request = Request.Builder().url(url).build()
         val call = client.newCall(request)

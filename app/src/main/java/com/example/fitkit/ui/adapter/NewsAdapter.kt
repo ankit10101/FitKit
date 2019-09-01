@@ -13,7 +13,6 @@ import android.net.Uri
 import com.example.fitkit.model.News
 import com.example.fitkit.R
 
-
 class NewsAdapter(private val newsItems: List<News>) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): NewsHolder {
         val inflatedView = LayoutInflater.from(viewGroup.context)

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -8,21 +7,21 @@
         android:padding="30dp"
         tools:context=".ui.activity.SignInActivity">
 
-
     <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true">
+
         <EditText
                 android:id="@+id/etName"
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_full_name"
-                android:textSize="20sp"
+                android:layout_marginTop="5dp"
                 android:ems="10"
-                android:inputType="text"/>
+                android:hint="@string/enter_full_name"
+                android:inputType="text"
+                android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -30,15 +29,16 @@
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true">
+
         <EditText
                 android:id="@+id/etEmailSignUp"
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email"
-                android:textSize="20sp"
+                android:layout_marginTop="5dp"
                 android:ems="10"
-                android:inputType="textEmailAddress"/>
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -46,15 +46,16 @@
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true">
+
         <EditText
                 android:id="@+id/etGender"
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/gender"
-                android:textSize="20sp"
+                android:layout_marginTop="5dp"
                 android:ems="10"
-                android:inputType="text"/>
+                android:hint="@string/gender"
+                android:inputType="text"
+                android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -62,15 +63,16 @@
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true">
+
         <EditText
                 android:id="@+id/etHeight"
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/height_m"
-                android:textSize="20sp"
+                android:layout_marginTop="5dp"
                 android:ems="10"
-                android:inputType="numberDecimal"/>
+                android:hint="@string/height_m"
+                android:inputType="numberDecimal"
+                android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -78,39 +80,41 @@
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true">
+
         <EditText
                 android:id="@+id/etWeight"
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/weight_kg"
-                android:textSize="20sp"
+                android:layout_marginTop="5dp"
                 android:ems="10"
-                android:inputType="numberDecimal"/>
+                android:hint="@string/weight_kg"
+                android:inputType="numberDecimal"
+                android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true">
-        <EditText
-                android:id="@+id/etPasswordSignUp"
-                android:layout_marginTop="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/password"
-                android:textSize="20sp"
-                android:ems="10"
-                android:inputType="textPassword"/>
-    </android.support.design.widget.TextInputLayout>
     <Button
-            android:id="@+id/btnSignUp"
-            android:layout_marginTop="50dp"
-            android:textSize="22sp"
+            android:id="@+id/btnSaveEdit"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="@string/register"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button_rounded"
+            android:text="@string/save_edit"
             android:textColor="#fff"
-            android:background="@drawable/button_rounded"/>
+            android:textSize="22sp" />
+
+    <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp" />
+
+    <TextView
+            android:id="@+id/tvWait"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Please wait while we fetch your data"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"/>
 </LinearLayout>

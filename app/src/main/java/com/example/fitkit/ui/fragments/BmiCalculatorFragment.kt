@@ -11,10 +11,9 @@ import kotlinx.android.synthetic.main.fragment_bmi_calculator.*
 import java.text.DecimalFormat
 import kotlin.math.pow
 
-
 class BmiCalculatorFragment : Fragment() {
     companion object {
-        var bmiCalculatorFragment: BmiCalculatorFragment? = null
+        private var bmiCalculatorFragment: BmiCalculatorFragment? = null
         //For getting the same unique instance of the fragment on every call;
         //i.e. Singleton pattern
         fun getInstance(): Fragment? {
@@ -34,6 +33,7 @@ class BmiCalculatorFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         buttonCalculate.setOnClickListener {
             val twoDecimalPlaces = DecimalFormat(".##")
             val kg = java.lang.Double.parseDouble(inputKg.text.toString())

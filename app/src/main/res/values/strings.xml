@@ -34,5 +34,8 @@
     <string name="sign_out">Sign Out</string>
     <string name="fitkit">FitKit</string>
     <string name="the_fitness_and_sport_app">The Fitness and Sport App</string>
+    <string name="profile">Profile</string>
+    <string name="already_a_user_signin">Already a user? SignIn</string>
+    <string name="save_edit">Save/Edit</string>
 
 </resources>

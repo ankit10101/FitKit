@@ -5,5 +5,5 @@ class User(
     var name: String,
     var gender: String,
     var height: String,
-    var wieght: String
+    var weight: String
 )

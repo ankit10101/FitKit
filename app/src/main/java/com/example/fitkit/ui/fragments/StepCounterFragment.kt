@@ -17,10 +17,10 @@ import kotlinx.android.synthetic.main.fragment_step_counter.*
 
 class StepCounterFragment : Fragment(){
 
-    lateinit var countedStep: String
-    lateinit var DetectedStep: String
+    private lateinit var countedStep: String
+    private lateinit var detectedStep: String
 
-    var isServiceStopped: Boolean = false
+    private var isServiceStopped: Boolean = false
 
     private var intent: Intent? = null
     private val TAG = "SensorEvent"
@@ -94,17 +94,17 @@ class StepCounterFragment : Fragment(){
 
 
     // --------------------------------------------------------------------------- \\
-    // ___ retrieve data from intent & set data to textviews __ \\
+    // ___ retrieve data from intent & set data to text views __ \\
     @SuppressLint("SetTextI18n")
     private fun updateViews(intent: Intent) {
         // retrieve data out of the intent.
         countedStep = intent.getStringExtra("Counted_Step")
-        DetectedStep = intent.getStringExtra("Detected_Step")
+        detectedStep = intent.getStringExtra("Detected_Step")
         Log.d(TAG, countedStep)
-        Log.d(TAG, DetectedStep)
+        Log.d(TAG, detectedStep)
         if(stepCountTxV != null)
         stepCountTxV.text = "$countedStep Steps Counted"
-        //        stepDetectTxV.setText("Steps Detected = " + String.valueOf(DetectedStep) + '"');
+        //        stepDetectTxV.setText("Steps Detected = " + String.valueOf(detectedStep) + '"');
 
     }
 }

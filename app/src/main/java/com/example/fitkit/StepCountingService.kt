@@ -11,6 +11,7 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.os.Build
 import android.os.Handler
 import android.os.IBinder
 import android.support.v4.app.NotificationCompat
@@ -19,8 +20,8 @@ import android.util.Log
 class StepCountingService : Service(), SensorEventListener {
 
     companion object{
-        val TAG = "StepService"
-        val BROADCAST_ACTION = "com.example.fitkit.mybroadcast"
+        const val TAG = "StepService"
+        const val BROADCAST_ACTION = "com.example.fitkit.mybroadcast"
     }
 
     private lateinit var sensorManager: SensorManager
@@ -30,8 +31,8 @@ class StepCountingService : Service(), SensorEventListener {
     //int currentStepCount;
     private var currentStepsDetected: Int = 0
 
-    var stepCounter: Int = 0
-    var newStepCounter: Int = 0
+    private var stepCounter: Int = 0
+    private var newStepCounter: Int = 0
 
     var serviceStopped: Boolean = false // Boolean variable to control the repeating timer.
 
@@ -67,8 +68,10 @@ class StepCountingService : Service(), SensorEventListener {
         showNotification()
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        stepCounterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
-        stepDetectorSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            stepCounterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+            stepDetectorSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR)
+        }
         sensorManager.registerListener(this, stepCounterSensor, 0)
         sensorManager.registerListener(this, stepDetectorSensor, 0)
 
@@ -89,7 +92,7 @@ class StepCountingService : Service(), SensorEventListener {
         /////}
         // ___________________________________________________________________________ \\
 
-        return Service.START_STICKY
+        return START_STICKY
     }
 
     /** A client is binding to the service with bindService()  */
@@ -105,11 +108,6 @@ class StepCountingService : Service(), SensorEventListener {
         serviceStopped = true
 
         dismissNotification()
-    }
-
-    /** Called when the overall system is running low on memory, and actively running processes should trim their memory usage.  */
-    override fun onLowMemory() {
-        super.onLowMemory()
     }
 
     /////////////////__________________ Sensor Event. __________________//////////////////
