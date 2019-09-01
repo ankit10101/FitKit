@@ -114,7 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Please wait while we fetch your data"
-            android:textColor="@color/colorPrimaryDark"
+            android:text="@string/please_wait_while_we_fetch_your_data"
+            android:textColor="@color/colorPrimary"
             android:textSize="20sp"/>
 </LinearLayout>

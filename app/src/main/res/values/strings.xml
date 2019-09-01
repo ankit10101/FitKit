@@ -37,5 +37,6 @@
     <string name="profile">Profile</string>
     <string name="already_a_user_signin">Already a user? SignIn</string>
     <string name="save_edit">Save/Edit</string>
+    <string name="please_wait_while_we_fetch_your_data">Please wait while we fetch your data</string>
 
 </resources>

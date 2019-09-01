@@ -55,15 +55,10 @@ class ProfileActivity : AppCompatActivity() {
                         }
                     }
             }
-//            user?.updatePassword(password)
-//                ?.addOnCompleteListener { task ->
-//                    if (task.isSuccessful) {
-//                        Log.e("TAG", "User password updated.")
-//                    }
-//                }
             val userDb: User = User(email, name, gender, height, weight)
             FirebaseDatabase.getInstance().getReference("Users")
                 .child(FirebaseAuth.getInstance().currentUser!!.uid).setValue(userDb)
+            Toast.makeText(this, "Saved user details", Toast.LENGTH_SHORT).show()
         }
     }
 
