@@ -4,8 +4,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="30dp"
+        android:layout_margin="10dp"
         tools:context=".ui.activity.SignInActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ivProfilePic"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/login"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            android:layout_margin="10dp"/>
 
     <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -96,7 +106,7 @@
             android:id="@+id/btnSaveEdit"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/button_rounded"
             android:text="@string/save_edit"
             android:textColor="#fff"
@@ -104,17 +114,17 @@
 
     <ProgressBar
             android:id="@+id/progress_circular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
             android:padding="10dp" />
 
     <TextView
             android:id="@+id/tvWait"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:text="@string/please_wait_while_we_fetch_your_data"
             android:textColor="@color/colorPrimary"
-            android:textSize="20sp"/>
+            android:textSize="18sp" />
 </LinearLayout>

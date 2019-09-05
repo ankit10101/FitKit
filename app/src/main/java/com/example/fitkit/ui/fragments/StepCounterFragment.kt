@@ -28,10 +28,7 @@ class StepCounterFragment : Fragment(){
 
     companion object {
         private var stepCounterFragment: StepCounterFragment? = null
-        //For getting the same unique instance of the fragment on every call;
-        //i.e. Singleton pattern
         fun getInstance(): Fragment? {
-
             if (stepCounterFragment == null) {
                 stepCounterFragment = StepCounterFragment()
             }
@@ -46,15 +43,12 @@ class StepCounterFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // ___ instantiate intent ___ \\
-        //  Instantiate the intent declared globally - which will be passed to startService and stopService.
         intent = Intent(requireContext(),StepCountingService::class.java)
-        init() // Call view initialisation method.
+        init()
     }
 
     // Initialise views.
-    fun init() {
+    private fun init() {
 
         isServiceStopped = true // variable for managing service state - required to invoke "stopService" only once to avoid Exception.
 
@@ -90,10 +84,7 @@ class StepCounterFragment : Fragment(){
             updateViews(intent)
         }
     }
-    // ___________________________________________________________________________ \\
 
-
-    // --------------------------------------------------------------------------- \\
     // ___ retrieve data from intent & set data to text views __ \\
     @SuppressLint("SetTextI18n")
     private fun updateViews(intent: Intent) {

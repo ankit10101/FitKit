@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.example.fitkit">
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.example.fitkit">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
             android:allowBackup="true"
@@ -14,24 +15,18 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-
         <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activity.ProfileActivity" />
+        <activity android:name=".ui.activity.SignInActivity" />
+        <activity android:name=".ui.activity.MainActivity" />
 
-        <activity android:name=".ui.activity.ProfileActivity">
-        </activity>
-
-        <activity android:name=".ui.activity.SignInActivity">
-        </activity>
-
-        <activity android:name=".ui.activity.MainActivity">
-        </activity>
-
-        <service android:name=".StepCountingService"/>
-
+        <service android:name=".StepCountingService" />
     </application>
+
 </manifest>

@@ -15,12 +15,15 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class SignInActivity : AppCompatActivity() {
 
+    private lateinit var email: String
+    private lateinit var password: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
         btnLogin.setOnClickListener {
-            val email = etEmail.text.toString()
-            val password = etPassword.text.toString()
+            email = etEmail.text.toString()
+            password = etPassword.text.toString()
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(baseContext, "Please Enter Email", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -29,16 +32,7 @@ class SignInActivity : AppCompatActivity() {
                 Toast.makeText(baseContext, "Please Enter PassWord", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            FirebaseAuth.getInstance()
-                .signInWithEmailAndPassword(email, password)
-                .addOnSuccessListener {
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this, "Login Failed!!", Toast.LENGTH_SHORT).show()
-                    it.printStackTrace()
-                }
+            signIn()
         }
 
         tvSignIn.setOnClickListener {
@@ -60,17 +54,27 @@ class SignInActivity : AppCompatActivity() {
             }
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
-                    //                    val user = User(email, name, gender, height, weight)
-//                    FirebaseDatabase.getInstance().getReference("Users")
-//                        .child(FirebaseAuth.getInstance().currentUser!!.uid).setValue(user)
                     Toast.makeText(this, "Registration Completed", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 }
                 .addOnFailureListener {
-                    Toast.makeText(this, "Registration Failed", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                     it.printStackTrace()
                 }
         }
+    }
+
+    private fun signIn() {
+        FirebaseAuth.getInstance()
+            .signInWithEmailAndPassword(email, password)
+            .addOnSuccessListener {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Login Failed!!", Toast.LENGTH_SHORT).show()
+                it.printStackTrace()
+            }
     }
 }

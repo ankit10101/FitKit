@@ -38,19 +38,13 @@ class StepCountingService : Service(), SensorEventListener {
 
     private lateinit var notificationManager: NotificationManager
 
-    // --------------------------------------------------------------------------- \\
-    // _ (1) declare broadcasting element variables _ \\
-    // Declare an instance of the Intent class.
     private lateinit var intent: Intent
 
     // Create a handler - that will be used to broadcast our data, after a specified amount of time.
     private val handler = Handler()
     // Declare and initialise counter - for keeping a record of how many times the service carried out updates.
     var counter = 0
-    // ___________________________________________________________________________ \\
 
-
-    /** Called when the service is being created.  */
     override fun onCreate() {
         super.onCreate()
 
@@ -61,7 +55,6 @@ class StepCountingService : Service(), SensorEventListener {
         // ___________________________________________________________________________ \\
     }
 
-    /** The service is starting, due to a call to startService()  */
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         Log.v("Service", "Start")
 
@@ -95,12 +88,10 @@ class StepCountingService : Service(), SensorEventListener {
         return START_STICKY
     }
 
-    /** A client is binding to the service with bindService()  */
     override fun onBind(intent: Intent): IBinder? {
         return null
     }
 
-    /** Called when The service is no longer used and is being destroyed  */
     override fun onDestroy() {
         super.onDestroy()
         Log.v("Service", "Stop")
@@ -110,7 +101,6 @@ class StepCountingService : Service(), SensorEventListener {
         dismissNotification()
     }
 
-    /////////////////__________________ Sensor Event. __________________//////////////////
     override fun onSensorChanged(event: SensorEvent) {
         // STEP_COUNTER Sensor.
         // *** Step Counting does not restart until the device is restarted - therefore, an algorithm for restarting the counting must be implemented.
@@ -146,16 +136,12 @@ class StepCountingService : Service(), SensorEventListener {
     }
 
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
-    // ___________________________________________________________________________ \\
 
-
-    // --------------------------------------------------------------------------- \\
-    // _ Manage notification. _
     private fun showNotification() {
         val notificationBuilder = NotificationCompat.Builder(this)
-        notificationBuilder.setContentTitle("Pedometer")
-        notificationBuilder.setContentText("Pedometer session is running in the background.")
-        notificationBuilder.setSmallIcon(R.mipmap.sneaker)
+        notificationBuilder.setContentTitle("FitKit")
+        notificationBuilder.setContentText("Step Counter is running in the background.")
+        notificationBuilder.setSmallIcon(R.mipmap.ic_launcher)
         notificationBuilder.color = Color.parseColor("#6600cc")
         val colorLED = Color.argb(255, 0, 255, 0)
         notificationBuilder.setLights(colorLED, 500, 500)
@@ -177,11 +163,7 @@ class StepCountingService : Service(), SensorEventListener {
     private fun dismissNotification() {
         notificationManager.cancel(0)
     }
-    // ______________________________________________________________________________________ \\
 
-
-    // --------------------------------------------------------------------------- \\
-    // ___ (4) repeating timer ___ \\
     private val updateBroadcastData = object : Runnable {
         override fun run() {
             if (!serviceStopped) { // Only allow the repeating timer while service is running (once service is stopped the flag state will change and the code inside the conditional statement here will not execute).
@@ -192,10 +174,7 @@ class StepCountingService : Service(), SensorEventListener {
             }
         }
     }
-    // ___________________________________________________________________________ \\
 
-    // --------------------------------------------------------------------------- \\
-    // ___ (5) add  data to intent ___ \\
     private fun broadcastSensorValue() {
         Log.d(TAG, "Data to Activity")
         // add step counter to intent.
@@ -207,5 +186,5 @@ class StepCountingService : Service(), SensorEventListener {
         // call sendBroadcast with that intent  - which sends a message to whoever is registered to receive it.
         sendBroadcast(intent)
     }
-    // ___________________________________________________________________________ \\
+
 }
