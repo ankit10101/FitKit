@@ -1,31 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:id="@+id/parentLayout"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
 
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="150dp"
+            android:src="@drawable/stairs1" />
 
-    <Button
-            android:id="@+id/startServiceBtn"
-            android:layout_width="wrap_content"
+    <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/start_service"/>
+            android:orientation="vertical"
+            android:padding="8dp">
 
-    <TextView
-            android:id="@+id/stepCountTxV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            tools:text="Steps"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <Button
-            android:id="@+id/stopServiceBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/stop_service"/>
+            <TextView
+                    android:id="@+id/tvSteps"
+                    android:layout_width="275dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/steps"
+                    android:textColor="#000"
+                    android:textSize="28sp" />
 
-</LinearLayout>
+            <TextView
+                    android:id="@+id/tvStepsValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:padding="10dp"
+                    android:text="@string/_0"
+                    android:textColor="#000"
+                    android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="275dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/distance_travelled"
+                    android:textColor="#000"
+                    android:textSize="28sp" />
+
+            <TextView
+                    android:id="@+id/tvDistance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:padding="10dp"
+                    android:text="@string/_0"
+                    android:textColor="#000"
+                    android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+            <Button
+                    android:id="@+id/btnStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/start"
+                    android:textColor="#fff"
+                    android:background="@drawable/button_rounded"/>
+
+            <Button
+                    android:id="@+id/btnStop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/stop"
+                    android:textColor="#fff"
+                    android:background="@drawable/button_rounded"
+                    android:visibility="gone" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

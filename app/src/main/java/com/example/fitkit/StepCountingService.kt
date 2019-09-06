@@ -19,17 +19,14 @@ import android.util.Log
 
 class StepCountingService : Service(), SensorEventListener {
 
-    companion object{
+    companion object {
         const val TAG = "StepService"
         const val BROADCAST_ACTION = "com.example.fitkit.mybroadcast"
     }
 
     private lateinit var sensorManager: SensorManager
     private lateinit var stepCounterSensor: Sensor
-    private lateinit var stepDetectorSensor: Sensor
 
-    //int currentStepCount;
-    private var currentStepsDetected: Int = 0
 
     private var stepCounter: Int = 0
     private var newStepCounter: Int = 0
@@ -47,12 +44,9 @@ class StepCountingService : Service(), SensorEventListener {
 
     override fun onCreate() {
         super.onCreate()
-
-        // --------------------------------------------------------------------------- \\
         // ___ (2) create/instantiate intent. ___ \\
         // Instantiate the intent declared globally, and pass "BROADCAST_ACTION" to the constructor of the intent.
         intent = Intent(BROADCAST_ACTION)
-        // ___________________________________________________________________________ \\
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
@@ -63,13 +57,9 @@ class StepCountingService : Service(), SensorEventListener {
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             stepCounterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
-            stepDetectorSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR)
         }
         sensorManager.registerListener(this, stepCounterSensor, 0)
-        sensorManager.registerListener(this, stepDetectorSensor, 0)
 
-        //currentStepCount = 0;
-        currentStepsDetected = 0
         stepCounter = 0
         newStepCounter = 0
 
@@ -110,7 +100,7 @@ class StepCountingService : Service(), SensorEventListener {
             // -The long way of starting a new step counting sequence.-
             /**
              * int tempStepCount = countSteps;
-             * int initialStepCount = countSteps - tempStepCount; // Nullify step count - so that the step cpuinting can restart.
+             * int initialStepCount = countSteps - tempStepCount; // Nullify step count - so that the step counting can restart.
              * currentStepCount += initialStepCount; // This variable will be initialised with (0), and will be incremented by itself for every Sensor step counted.
              * stepCountTxV.setText(String.valueOf(currentStepCount));
              * currentStepCount++; // Increment variable by 1 - so that the variable can increase for every Step_Counter event.
@@ -118,17 +108,11 @@ class StepCountingService : Service(), SensorEventListener {
 
             // -The efficient way of starting a new step counting sequence.-
             if (stepCounter == 0) { // If the stepCounter is in its initial value, then...
-                stepCounter = event.values[0].toInt() // Assign the StepCounter Sensor event value to it.
+                stepCounter =
+                    event.values[0].toInt() // Assign the StepCounter Sensor event value to it.
             }
             newStepCounter =
                 countSteps - stepCounter // By subtracting the stepCounter variable from the Sensor event value - We start a new counting sequence from 0. Where the Sensor event value will increase, and stepCounter value will be only initialised once.
-        }
-
-        // STEP_DETECTOR Sensor.
-        // *** Step Detector: When a step event is detect - "event.values[0]" becomes 1. And stays at 1!
-        if (event.sensor.type == Sensor.TYPE_STEP_DETECTOR) {
-            val detectSteps = event.values[0].toInt()
-            currentStepsDetected += detectSteps //steps = steps + detectSteps; // This variable will be initialised with the STEP_DETECTOR event value (1), and will be incremented by itself (+1) for as long as steps are detected.
         }
 
         Log.v("Service Counter", newStepCounter.toString())
@@ -148,8 +132,7 @@ class StepCountingService : Service(), SensorEventListener {
         // To  make sure that the Notification LED is triggered.
         notificationBuilder.priority = Notification.PRIORITY_HIGH
         notificationBuilder.setOngoing(true)
-
-        //Intent resultIntent = new Intent(this, MainActivity.class);
+        ;
         val resultPendingIntent = PendingIntent.getActivity(this, 0, Intent(), 0)
         notificationBuilder.setContentIntent(resultPendingIntent)
 
@@ -166,7 +149,10 @@ class StepCountingService : Service(), SensorEventListener {
 
     private val updateBroadcastData = object : Runnable {
         override fun run() {
-            if (!serviceStopped) { // Only allow the repeating timer while service is running (once service is stopped the flag state will change and the code inside the conditional statement here will not execute).
+            if (!serviceStopped) {
+                // Only allow the repeating timer while service is running
+                // (once service is stopped the flag state will change and the code inside the conditional
+                // statement here will not execute).
                 // Call the method that broadcasts the data to the Activity..
                 broadcastSensorValue()
                 // Call "handler.postDelayed" again, after a specified delay.
@@ -176,14 +162,8 @@ class StepCountingService : Service(), SensorEventListener {
     }
 
     private fun broadcastSensorValue() {
-        Log.d(TAG, "Data to Activity")
-        // add step counter to intent.
         intent.putExtra("Counted_Step_Int", newStepCounter)
         intent.putExtra("Counted_Step", newStepCounter.toString())
-        // add step detector to intent.
-        intent.putExtra("Detected_Step_Int", currentStepsDetected)
-        intent.putExtra("Detected_Step", currentStepsDetected.toString())
-        // call sendBroadcast with that intent  - which sends a message to whoever is registered to receive it.
         sendBroadcast(intent)
     }
 

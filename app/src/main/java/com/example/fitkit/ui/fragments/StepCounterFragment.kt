@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import java.text.DecimalFormat
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -15,16 +16,13 @@ import com.example.fitkit.R
 import com.example.fitkit.StepCountingService
 import kotlinx.android.synthetic.main.fragment_step_counter.*
 
-class StepCounterFragment : Fragment(){
+class StepCounterFragment : Fragment() {
 
     private lateinit var countedStep: String
-    private lateinit var detectedStep: String
 
     private var isServiceStopped: Boolean = false
 
     private var intent: Intent? = null
-    private val TAG = "SensorEvent"
-
 
     companion object {
         private var stepCounterFragment: StepCounterFragment? = null
@@ -36,40 +34,52 @@ class StepCounterFragment : Fragment(){
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_step_counter, container, false)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        intent = Intent(requireContext(),StepCountingService::class.java)
+        intent = Intent(requireContext(), StepCountingService::class.java)
         init()
     }
 
     // Initialise views.
     private fun init() {
 
-        isServiceStopped = true // variable for managing service state - required to invoke "stopService" only once to avoid Exception.
+        isServiceStopped =
+            true // variable for managing service state - required to invoke "stopService" only once to avoid Exception.
 
         // ________________ Service Management (Start & Stop Service). ________________ //
         // ___ start Service & register broadcast receiver ___ \\
-        startServiceBtn.setOnClickListener {
+        btnStart.setOnClickListener {
             // start Service.
             activity?.startService(Intent(requireContext(), StepCountingService::class.java))
             // register our BroadcastReceiver by passing in an IntentFilter. * identifying the message that is broadcasted by using static string "BROADCAST_ACTION".
-            activity?.registerReceiver(broadcastReceiver, IntentFilter(StepCountingService.BROADCAST_ACTION))
+            activity?.registerReceiver(
+                broadcastReceiver,
+                IntentFilter(StepCountingService.BROADCAST_ACTION)
+            )
             isServiceStopped = false
+            btnStart.visibility = View.GONE
+            btnStop.visibility = View.VISIBLE
         }
 
         // ___ unregister receiver & stop service ___ \\
-        stopServiceBtn.setOnClickListener {
+        btnStop.setOnClickListener {
             if (!isServiceStopped) {
                 // call unregisterReceiver - to stop listening for broadcasts.
                 activity?.unregisterReceiver(broadcastReceiver)
                 // stop Service.
                 activity?.stopService(Intent(requireContext(), StepCountingService::class.java))
                 isServiceStopped = true
+                btnStart.visibility = View.VISIBLE
+                btnStop.visibility = View.GONE
             }
         }
     }
@@ -89,13 +99,12 @@ class StepCounterFragment : Fragment(){
     @SuppressLint("SetTextI18n")
     private fun updateViews(intent: Intent) {
         // retrieve data out of the intent.
+        val twoDecimalPlaces = DecimalFormat(".##")
         countedStep = intent.getStringExtra("Counted_Step")
-        detectedStep = intent.getStringExtra("Detected_Step")
-        Log.d(TAG, countedStep)
-        Log.d(TAG, detectedStep)
-        if(stepCountTxV != null)
-        stepCountTxV.text = "$countedStep Steps Counted"
-        //        stepDetectTxV.setText("Steps Detected = " + String.valueOf(detectedStep) + '"');
+        Log.d("TAG", countedStep)
+        if (tvStepsValue != null)
+            tvStepsValue.text = countedStep
+        tvDistance.text = twoDecimalPlaces.format(((countedStep.toDouble()) * 0.78))
 
     }
 }

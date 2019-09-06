@@ -73,7 +73,7 @@ class SignInActivity : AppCompatActivity() {
                 finish()
             }
             .addOnFailureListener {
-                Toast.makeText(this, "Login Failed!!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                 it.printStackTrace()
             }
     }
